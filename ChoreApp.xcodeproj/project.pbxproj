@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		3A76783E71DBEE1F8718EC9D /* Pods_ChoreAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11CFFF1E2844D418F8797117 /* Pods_ChoreAppTests.framework */; };
+		8585B12D22ECBC24002244CD /* AddChoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8585B12C22ECBC24002244CD /* AddChoreViewController.swift */; };
+		8585B12F22ECBF13002244CD /* ChoresListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8585B12E22ECBF13002244CD /* ChoresListViewController.swift */; };
+		8585B13122ECC241002244CD /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8585B13022ECC241002244CD /* Extensions.swift */; };
+		8585B13822ECD1BA002244CD /* ChoreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8585B13622ECD1BA002244CD /* ChoreCell.swift */; };
+		8585B13922ECD1BA002244CD /* ChoreCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8585B13722ECD1BA002244CD /* ChoreCell.xib */; };
 		85D5B9B322E3D5E700171568 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85D5B9B222E3D5E700171568 /* AppDelegate.swift */; };
 		85D5B9B522E3D5E700171568 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85D5B9B422E3D5E700171568 /* ViewController.swift */; };
 		85D5B9B822E3D5E700171568 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 85D5B9B622E3D5E700171568 /* Main.storyboard */; };
@@ -43,6 +48,11 @@
 		4AC02EA7378A7E3FACBAD9F1 /* Pods_ChoreApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ChoreApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		743777F0167BDFFFE9F2FD0E /* Pods-ChoreApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChoreApp.release.xcconfig"; path = "Target Support Files/Pods-ChoreApp/Pods-ChoreApp.release.xcconfig"; sourceTree = "<group>"; };
 		8585B12B22ECAA51002244CD /* Objc-Bridge-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Objc-Bridge-Header.h"; sourceTree = "<group>"; };
+		8585B12C22ECBC24002244CD /* AddChoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddChoreViewController.swift; sourceTree = "<group>"; };
+		8585B12E22ECBF13002244CD /* ChoresListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoresListViewController.swift; sourceTree = "<group>"; };
+		8585B13022ECC241002244CD /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		8585B13622ECD1BA002244CD /* ChoreCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoreCell.swift; sourceTree = "<group>"; };
+		8585B13722ECD1BA002244CD /* ChoreCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChoreCell.xib; sourceTree = "<group>"; };
 		85D5B9AF22E3D5E700171568 /* ChoreApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChoreApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		85D5B9B222E3D5E700171568 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		85D5B9B422E3D5E700171568 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -119,6 +129,11 @@
 				85D5B9B422E3D5E700171568 /* ViewController.swift */,
 				8585B12B22ECAA51002244CD /* Objc-Bridge-Header.h */,
 				85D5B9B622E3D5E700171568 /* Main.storyboard */,
+				8585B13622ECD1BA002244CD /* ChoreCell.swift */,
+				8585B13722ECD1BA002244CD /* ChoreCell.xib */,
+				8585B13022ECC241002244CD /* Extensions.swift */,
+				8585B12E22ECBF13002244CD /* ChoresListViewController.swift */,
+				8585B12C22ECBC24002244CD /* AddChoreViewController.swift */,
 				85D5B9B922E3D5E800171568 /* Assets.xcassets */,
 				85D5B9BB22E3D5E800171568 /* LaunchScreen.storyboard */,
 				85D5B9BE22E3D5E800171568 /* Info.plist */,
@@ -278,6 +293,7 @@
 				85D5B9BD22E3D5E800171568 /* LaunchScreen.storyboard in Resources */,
 				85D5B9BA22E3D5E800171568 /* Assets.xcassets in Resources */,
 				85D5B9B822E3D5E700171568 /* Main.storyboard in Resources */,
+				8585B13922ECD1BA002244CD /* ChoreCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -388,7 +404,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8585B13122ECC241002244CD /* Extensions.swift in Sources */,
+				8585B13822ECD1BA002244CD /* ChoreCell.swift in Sources */,
+				8585B12F22ECBF13002244CD /* ChoresListViewController.swift in Sources */,
 				85D5B9B522E3D5E700171568 /* ViewController.swift in Sources */,
+				8585B12D22ECBC24002244CD /* AddChoreViewController.swift in Sources */,
 				85D5B9B322E3D5E700171568 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ChoreCell" rowHeight="68" id="KGk-i7-Jjw" customClass="ChoreCell" customModule="ChoreApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="544" height="68"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="544" height="67.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chore Description" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="tt1-rZ-6of">
+                        <rect key="frame" x="94" y="5" width="436" height="57.5"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="436" id="wSK-ru-ry2"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="17"/>
+                        <color key="textColor" red="0.04336994886" green="0.39981257920000002" blue="0.50117808580000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P6s-XJ-ybI">
+                        <rect key="frame" x="0.0" y="0.0" width="86" height="67.5"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chore Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="YrM-O5-5wv">
+                                <rect key="frame" x="5" y="5" width="76" height="57.5"/>
+                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="0.40000000000000002" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="YrM-O5-5wv" firstAttribute="leading" secondItem="P6s-XJ-ybI" secondAttribute="leading" constant="5" id="AS4-xE-jgQ"/>
+                            <constraint firstAttribute="trailing" secondItem="YrM-O5-5wv" secondAttribute="trailing" constant="5" id="lkg-jT-kTh"/>
+                            <constraint firstItem="YrM-O5-5wv" firstAttribute="top" secondItem="P6s-XJ-ybI" secondAttribute="top" constant="5" id="qYj-KV-Ri3"/>
+                            <constraint firstAttribute="bottom" secondItem="YrM-O5-5wv" secondAttribute="bottom" constant="5" id="tis-Au-b6E"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="tt1-rZ-6of" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="6fw-Lf-WiO"/>
+                    <constraint firstAttribute="bottom" secondItem="P6s-XJ-ybI" secondAttribute="bottom" id="AdI-kF-sm9"/>
+                    <constraint firstAttribute="trailing" secondItem="tt1-rZ-6of" secondAttribute="trailing" constant="14" id="DTJ-12-ucw"/>
+                    <constraint firstItem="P6s-XJ-ybI" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="OGf-vx-pec"/>
+                    <constraint firstAttribute="bottom" secondItem="tt1-rZ-6of" secondAttribute="bottom" constant="5" id="ffJ-dw-C1X"/>
+                    <constraint firstItem="P6s-XJ-ybI" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="qnZ-N5-PAO"/>
+                    <constraint firstItem="tt1-rZ-6of" firstAttribute="leading" secondItem="P6s-XJ-ybI" secondAttribute="trailing" constant="8" id="tI9-Lx-3Xa"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="choreDescription" destination="tt1-rZ-6of" id="W75-9p-sYO"/>
+                <outlet property="choreTitle" destination="YrM-O5-5wv" id="mhh-R0-hfa"/>
+            </connections>
+            <point key="canvasLocation" x="298.55072463768118" y="113.83928571428571"/>
+        </tableViewCell>
+    </objects>
+</document>
