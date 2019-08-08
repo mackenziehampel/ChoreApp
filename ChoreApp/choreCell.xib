@@ -20,7 +20,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chore Description" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="tt1-rZ-6of">
-                        <rect key="frame" x="94" y="5" width="436" height="57.5"/>
+                        <rect key="frame" x="108" y="5" width="436" height="57.5"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="436" id="wSK-ru-ry2"/>
                         </constraints>
@@ -29,10 +29,10 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P6s-XJ-ybI">
-                        <rect key="frame" x="0.0" y="0.0" width="86" height="67.5"/>
+                        <rect key="frame" x="0.0" y="0.0" width="100" height="67.5"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chore Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="YrM-O5-5wv">
-                                <rect key="frame" x="5" y="5" width="76" height="57.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chore Title" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="YrM-O5-5wv">
+                                <rect key="frame" x="5" y="5" width="90" height="57.5"/>
                                 <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                                 <nil key="highlightedColor"/>
@@ -41,6 +41,7 @@
                         <color key="backgroundColor" red="1" green="0.40000000000000002" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="YrM-O5-5wv" firstAttribute="leading" secondItem="P6s-XJ-ybI" secondAttribute="leading" constant="5" id="AS4-xE-jgQ"/>
+                            <constraint firstAttribute="width" constant="100" id="Keg-bb-9P3"/>
                             <constraint firstAttribute="trailing" secondItem="YrM-O5-5wv" secondAttribute="trailing" constant="5" id="lkg-jT-kTh"/>
                             <constraint firstItem="YrM-O5-5wv" firstAttribute="top" secondItem="P6s-XJ-ybI" secondAttribute="top" constant="5" id="qYj-KV-Ri3"/>
                             <constraint firstAttribute="bottom" secondItem="YrM-O5-5wv" secondAttribute="bottom" constant="5" id="tis-Au-b6E"/>
@@ -50,7 +51,6 @@
                 <constraints>
                     <constraint firstItem="tt1-rZ-6of" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="6fw-Lf-WiO"/>
                     <constraint firstAttribute="bottom" secondItem="P6s-XJ-ybI" secondAttribute="bottom" id="AdI-kF-sm9"/>
-                    <constraint firstAttribute="trailing" secondItem="tt1-rZ-6of" secondAttribute="trailing" constant="14" id="DTJ-12-ucw"/>
                     <constraint firstItem="P6s-XJ-ybI" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="OGf-vx-pec"/>
                     <constraint firstAttribute="bottom" secondItem="tt1-rZ-6of" secondAttribute="bottom" constant="5" id="ffJ-dw-C1X"/>
                     <constraint firstItem="P6s-XJ-ybI" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="qnZ-N5-PAO"/>

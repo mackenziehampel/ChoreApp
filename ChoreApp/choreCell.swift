@@ -8,10 +8,11 @@
 
 import UIKit
 
+
 class ChoreCell: UITableViewCell {
     @IBOutlet weak var choreDescription: UILabel!
     @IBOutlet weak var choreTitle: UILabel!
-    
+  
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -19,8 +20,8 @@ class ChoreCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+        
+        
     }
     
 }

@@ -13,6 +13,7 @@
 		8585B13122ECC241002244CD /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8585B13022ECC241002244CD /* Extensions.swift */; };
 		8585B13822ECD1BA002244CD /* ChoreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8585B13622ECD1BA002244CD /* ChoreCell.swift */; };
 		8585B13922ECD1BA002244CD /* ChoreCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8585B13722ECD1BA002244CD /* ChoreCell.xib */; };
+		8585B13B22ECF429002244CD /* AssignPersonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8585B13A22ECF429002244CD /* AssignPersonViewController.swift */; };
 		85D5B9B322E3D5E700171568 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85D5B9B222E3D5E700171568 /* AppDelegate.swift */; };
 		85D5B9B522E3D5E700171568 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85D5B9B422E3D5E700171568 /* ViewController.swift */; };
 		85D5B9B822E3D5E700171568 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 85D5B9B622E3D5E700171568 /* Main.storyboard */; };
@@ -53,6 +54,7 @@
 		8585B13022ECC241002244CD /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		8585B13622ECD1BA002244CD /* ChoreCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoreCell.swift; sourceTree = "<group>"; };
 		8585B13722ECD1BA002244CD /* ChoreCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChoreCell.xib; sourceTree = "<group>"; };
+		8585B13A22ECF429002244CD /* AssignPersonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssignPersonViewController.swift; sourceTree = "<group>"; };
 		85D5B9AF22E3D5E700171568 /* ChoreApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChoreApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		85D5B9B222E3D5E700171568 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		85D5B9B422E3D5E700171568 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -129,6 +131,7 @@
 				85D5B9B422E3D5E700171568 /* ViewController.swift */,
 				8585B12B22ECAA51002244CD /* Objc-Bridge-Header.h */,
 				85D5B9B622E3D5E700171568 /* Main.storyboard */,
+				8585B13A22ECF429002244CD /* AssignPersonViewController.swift */,
 				8585B13622ECD1BA002244CD /* ChoreCell.swift */,
 				8585B13722ECD1BA002244CD /* ChoreCell.xib */,
 				8585B13022ECC241002244CD /* Extensions.swift */,
@@ -410,6 +413,7 @@
 				85D5B9B522E3D5E700171568 /* ViewController.swift in Sources */,
 				8585B12D22ECBC24002244CD /* AddChoreViewController.swift in Sources */,
 				85D5B9B322E3D5E700171568 /* AppDelegate.swift in Sources */,
+				8585B13B22ECF429002244CD /* AssignPersonViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
