@@ -10,8 +10,6 @@ import Foundation
 import UIKit
 import SQLite3
 
-
-
 protocol NameDelegate {
     func passBackName(name:String)
 }

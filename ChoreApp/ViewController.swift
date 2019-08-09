@@ -50,6 +50,8 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
         self.viewChoresBtn.isEnabled = false
         self.viewChoresBtn.backgroundColor = .lightGray
         
+       // NotificationCenter.default.addObserver(self, selector: #selector(insertIntoDatabase(_:)), name: .didReceiveData, object: nil)
+        
         //SQLLITE
         let fileUrl =  try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent("Chore.sqlite")
         
@@ -75,6 +77,11 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
         print("made it")
     }
     
+    @objc func insertIntoDatabase(_ notification: NSNotification){
+        selectQuerry()
+        self.saveToDatabase()
+    }
+    
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         
         self.viewChoresLbl.isHidden = true
@@ -89,8 +96,26 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
         //vc.dateLabel!.text = selectedDate.description
         vc.selectedDate = selectedDate
         vc.delegate = self
-        vc.chores = choresMasterList
-       // vc.chores = filterChoresListToDate(date: selectedDate, choreList: choresMasterList)
+        vc.chores = filterChoresByDate()
+    }
+    
+    func filterChoresByDate() -> [Chore]{
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        let myString = formatter.string(from: self.selectedDate)
+        let yourDate = formatter.date(from: myString)
+        formatter.dateFormat = "dd-MMM-yyyy"
+        let selectedDateFromCalendar = formatter.string(from: yourDate!)
+        
+        
+        var tempArray = [Chore]()
+        
+        for chore in choresMasterList {
+            if selectedDateFromCalendar == chore.selectedDate {
+                tempArray.append(chore)
+            }
+        }
+        return tempArray
     }
     
     func filterChoresListToDate(date: Date, choreList: [Chore]) -> [Chore] {
@@ -117,9 +142,21 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
                 choresMasterList.append(c)
             }
         }
+        
         self.saveToDatabase()
+        
     }
     
+    func removeChoreFromMasterList(chore: Chore) {
+        var index = 0
+        for c in choresMasterList {
+            if c.choreTitle == chore.choreTitle{
+                choresMasterList.remove(at: index)
+            }
+            index += 1
+        }
+        saveToDatabase()
+    }
     
     func selectQuerry() -> Void{
         //inventoryInfo.removeAll()
@@ -142,11 +179,7 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
             let assignedPerson = String(cString: sqlite3_column_text(stmt, 3))
             let selectedD = String(cString: sqlite3_column_text(stmt, 4))
             
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "yyyy'-'MM'-'dd"
-            let date = dateFormatter.date(from: selectedD) ?? Date()
-            
-            let serverItem = Chore(choreTitle: choreTitle, choreDescription: choreDescription, assignedPerson: assignedPerson, selectedDate: date.description)
+            let serverItem = Chore(choreTitle: choreTitle, choreDescription: choreDescription, assignedPerson: assignedPerson, selectedDate: selectedD)
             
             choresMasterList.append(serverItem)
 
@@ -211,10 +244,6 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
             }
         }
     }
-    
-
-    
-    
 }
 
 

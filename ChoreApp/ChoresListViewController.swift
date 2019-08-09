@@ -7,10 +7,13 @@
 //
 
 import Foundation
+import SQLite3
 import UIKit
+
 
 protocol UpdateChoresListDelegate {
     func updateChoresList(choresList: [Chore])
+    func removeChoreFromMasterList(chore: Chore)
 }
 
 class ChoresListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource,ChoreListDelegate{
@@ -21,11 +24,12 @@ class ChoresListViewController: UIViewController, UITableViewDelegate, UITableVi
     var selectedDate = Date()
     var personsList = [Person]()
     var delegate : UpdateChoresListDelegate!
-   
     var sortedFirstName = [String]()
     var uniqueFirstNames = [String]()
     var firstNames = [String]()
     var sections = [[Chore]]()
+    
+     var db: OpaquePointer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,17 +42,29 @@ class ChoresListViewController: UIViewController, UITableViewDelegate, UITableVi
         dateFormatter.timeStyle = .none
         dateFormatter.locale = Locale(identifier: "en_US")
         self.dateLabel.text = dateFormatter.string(from: selectedDate)
+    
+        refilterRowsAndSections()
         
-        firstNames = chores.map{ $0.assignedPerson }
+        let fileUrl =  try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent("Chore.sqlite")
+        
+        if sqlite3_open(fileUrl.path, &db) != SQLITE_OK {
+            print("ERROR OPENING DB")
+            return
+        }
+        
+    }
+    func refilterRowsAndSections(){
+        
+        let tempChores = filterChoresByDate()
+        firstNames = tempChores.map{ $0.assignedPerson }
         uniqueFirstNames = Array(Set(firstNames))
         sortedFirstName = uniqueFirstNames.sorted()
         
-        sections = sortedFirstName.map{firstName in return self.chores
+        sections = sortedFirstName.map{firstName in return tempChores
             .filter { $0.assignedPerson == firstName}
         }
-        
-        
     }
+    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return sections[section].count
@@ -82,14 +98,66 @@ class ChoresListViewController: UIViewController, UITableViewDelegate, UITableVi
         
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd"
-        let myString = formatter.string(from: Date())
+        let myString = formatter.string(from: selectedDate)
         let yourDate = formatter.date(from: myString)
         formatter.dateFormat = "dd-MMM-yyyy"
         let myStringafd = formatter.string(from: yourDate!)
+        
         chores.append(Chore(choreTitle: title, choreDescription: desc, assignedPerson: name, selectedDate: myStringafd ))
+        self.delegate.updateChoresList(choresList: chores)
+        
+        selectQuerry()
+        refilterRowsAndSections()
         self.tableView.reloadData()
         
     }
+    
+    func filterChoresByDate() -> [Chore]{
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        let myString = formatter.string(from: self.selectedDate)
+        let yourDate = formatter.date(from: myString)
+        formatter.dateFormat = "dd-MMM-yyyy"
+        let selectedDateFromCalendar = formatter.string(from: yourDate!)
+        
+        var tempArray = [Chore]()
+        
+        for chore in chores {
+            if selectedDateFromCalendar == chore.selectedDate {
+                tempArray.append(chore)
+            }
+        }
+        return tempArray
+    }
+    
+    func selectQuerry() -> Void{
+        //inventoryInfo.removeAll()
+        chores.removeAll()
+        let queryString = "SELECT * FROM Chores;"
+        var stmt:OpaquePointer?
+        
+        
+        if sqlite3_prepare_v2(db, queryString, -1, &stmt, nil) != SQLITE_OK{
+            let errmsg = String(cString: sqlite3_errmsg(db)!)
+            print("error preparing insert: \(errmsg)")
+            return
+        }
+        
+        //traversing through all the records
+        while(sqlite3_step(stmt) == SQLITE_ROW){
+            let id = sqlite3_column_int(stmt, 0)
+            let choreTitle = String(cString: sqlite3_column_text(stmt, 1))
+            let choreDescription = String(cString: sqlite3_column_text(stmt, 2))
+            let assignedPerson = String(cString: sqlite3_column_text(stmt, 3))
+            let selectedD = String(cString: sqlite3_column_text(stmt, 4))
+            
+            let serverItem = Chore(choreTitle: choreTitle, choreDescription: choreDescription, assignedPerson: assignedPerson, selectedDate: selectedD)
+            
+            chores.append(serverItem)
+            
+        }
+    }
+    
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return sections.count
@@ -105,4 +173,46 @@ class ChoresListViewController: UIViewController, UITableViewDelegate, UITableVi
         return sortedFirstName[section]
     }
   
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let ct =  chores[indexPath.row].choreTitle
+            self.delegate.removeChoreFromMasterList(chore: chores[indexPath.row])
+            chores.remove(at: indexPath.row)
+            deleteFromChoresTable(title: ct)
+            selectQuerry()
+            refilterRowsAndSections()
+           
+            tableView.reloadData()
+    
+        }
+    }
+    
+    func deleteFromChoresTable(title: String){
+        let deleteStatementStirng = "DELETE FROM Chores WHERE choreTitle = ?;"
+        
+        var deleteStatement: OpaquePointer? = nil
+        if sqlite3_prepare_v2(db, deleteStatementStirng, -1, &deleteStatement, nil) == SQLITE_OK {
+            
+            let t = title as NSString
+            if sqlite3_bind_text(deleteStatement, 1, t.utf8String, -1, nil) != SQLITE_OK{
+                let errmsg = String(cString: sqlite3_errmsg(db)!)
+                print("failure binding title: \(errmsg)")
+                return
+            }
+            
+            
+            if sqlite3_step(deleteStatement) == SQLITE_DONE {
+                print("Successfully deleted row.")
+            } else {
+                print("Could not delete row.")
+            }
+            
+        } else {
+            print("DELETE statement could not be prepared")
+        }
+        
+        sqlite3_finalize(deleteStatement)
+    
+    }
+    
 }
